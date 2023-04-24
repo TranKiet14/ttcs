@@ -10,7 +10,7 @@ fetchApi(`/api/rooms`).then(data => {
         data.forEach(item => {
             htmls += `<div class="col-xl-3 col-lg-3 col-md-6 col-6">
                            <a href="#" class="item">
-                               <img src="D:/photos/${item.image}" alt="">
+                               <img src="/photos/${item.image}" alt="">
                                <h5>${item.price} Triệu/Tháng</h5>
                                <h6>${item.dientich}m<sup>2</sup></h6>
                            </a>

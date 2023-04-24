@@ -2,21 +2,24 @@ package com.example.ttcs.TTCS.controller;
 
 
 import com.example.ttcs.TTCS.entity.Room;
+import com.example.ttcs.TTCS.entity.RoomQueue;
 import com.example.ttcs.TTCS.service.RoomService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 
 @Controller
-public class RoomController {
+public class
+RoomController {
     @Autowired
     private RoomService roomService;
 
@@ -31,11 +34,13 @@ public class RoomController {
     }
 
     @GetMapping("/form-room")
-    public String show(HttpSession session){
+    public String show(HttpSession session, Model theModel){
         if(session.getAttribute("username")==null){
             return "redirect:/login-form";
         }
         else{
+            RoomQueue room = new RoomQueue();
+            theModel.addAttribute("tmproom",room);
             return "rooms/room-form-tmp";
         }
     }
@@ -47,5 +52,29 @@ public class RoomController {
     @GetMapping("/{name}")
     public String roosearchbydistrict(@PathVariable("name") String name){
         return "rooms/list-room";
+    }
+
+    @GetMapping("/thong-tin-phong")
+    public String showRoom(@RequestParam(name = "id") int id){
+        return "/rooms/room-info";
+    }
+    @GetMapping("/danhsach")
+    public String showDs(Model theModel){
+        List<Room> list=roomService.findAll();
+        theModel.addAttribute("rooms", list);
+        return "/clients/ds-phong";
+    }
+
+    @GetMapping("/delete")
+    public String deleteRoom(@RequestParam("roomId") int theId){
+        Room room = roomService.findById(theId);
+        Path path = Paths.get("src/main/resources/static/photos/" + room.getImage());
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        roomService.deleteById(theId);
+        return "redirect:/danhsach";
     }
 }

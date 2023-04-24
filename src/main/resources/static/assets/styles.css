@@ -128,6 +128,8 @@ ul{
 .image img{
     width: 100%;
     height: auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 .section-one .inner-title{
     font-size: 32px;
@@ -165,6 +167,7 @@ ul{
     color: olivedrab;
     font-weight: 700;
 }
+
 .section-one .inner-button{
     display: flex;
     align-items: center;
@@ -258,6 +261,10 @@ footer{
 }
 .section-two .item h6{
     color: olivedrab;
+    font-weight: 500;
+}
+.section-two .item p{
+    color: var(--color-two);
     font-weight: 500;
 }
 .item:hover{

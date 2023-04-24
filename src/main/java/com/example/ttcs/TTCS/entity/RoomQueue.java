@@ -27,14 +27,14 @@ public class RoomQueue {
     private String image;
     @Column(name = "link")
     private String linkImages;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_client")
     private Client client;
 
     public RoomQueue() {
     }
 
-    public RoomQueue(String address, int dientich, String type, String trangthai, String noithat, String dichvu, float price, String image, String linkImages) {
+    public RoomQueue(String address, int dientich, String type, String trangthai, String noithat, String dichvu, float price, String image, String linkImages, String namefile) {
         this.address = address;
         this.dientich = dientich;
         this.type = type;

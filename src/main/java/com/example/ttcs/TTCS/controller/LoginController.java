@@ -34,5 +34,4 @@ public class LoginController {
         session.setAttribute("id", client.getId());
         return "redirect:/home";
     }
-
 }

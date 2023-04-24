@@ -43,9 +43,9 @@
                 </div>
                 <div class="col-4 form-search">
                     <div class="search">
-                        <form action="">
+                        <form action="/search" method="get">
                             <div class="input-group">
-                                <input type="text" placeholder="Bạn đang tìm phòng ở đâu...">
+                                <input type="text" name="keyword" placeholder="Bạn đang tìm phòng ở đâu...">
                                 <div class="input-append">
                                     <button class="btn-search" type="submit"><i
                                             class="fa-solid fa-magnifying-glass"></i></button>
@@ -63,11 +63,14 @@
                             </a>
                             <div class="room-list">
                                 <a href="/cau-giay">Phòng trọ Cầu Giấy</a>
-                                <a href="/thanh-xuan-ha-dong">Phòng trọ Thanh Xuân + Hà Đông</a>
-                                <a href="/tay-ho-hoan-kiem">Phòng trọ Tây Hồ + Hoàn Kiếm</a>
-                                <a href="/ba-dinh-dong-da">Phòng trọ Ba Đình + Đống Đa</a>
+                                <a href="/thanh-xuan">Phòng trọ Thanh Xuân</a>
+                                <a href="/ha-dong">Phòng trọ Hà Đông</a>
+                                <a href="/tay-ho">Phòng trọ Tây Hồ</a>
+                                <a href="/hoan-kiem">Phòng trọ Hoàn Kiếm</a>
+                                <a href="/ba-dinh">Phòng trọ Ba Đình</a>
+                                <a href="/dong-da">Phòng trọ Đống Đa</a>
                                 <a href="/tu-liem">Phòng trọ Từ Liêm</a>
-                                <a href="/hoang-mai-hai-ba-trung">Phòng trọ Hoàng Mai + Hai Bà Trưng</a>
+                                <a href="/hai-ba-trung">Phòng trọ Hai Bà Trưng</a>
                             </div>
                         </li>
                         <li><a href="/form-room">ĐĂNG BÀI</a></li>
@@ -90,10 +93,10 @@
                     </div>
                     <div class="inner-desc">
                         Mức giá
-                        <a href=""><i class="fa-regular fa-square-check"></i> Dưới 5 triệu</a>
-                        <a href=""><i class="fa-regular fa-square-check"></i> 5 đến 10 triệu</a>
-                        <a href=""><i class="fa-regular fa-square-check"></i> 10 đến 15 triệu</a>
-                        <a href=""><i class="fa-regular fa-square-check"></i> Trên 15 triệu</a>
+                        <a href="" id="a1"><i class="fa-regular fa-square-check"></i> Dưới 5 triệu</a>
+                        <a href="" id="a2"><i class="fa-regular fa-square-check"></i> 5 đến 10 triệu</a>
+                        <a href="" id="a3"><i class="fa-regular fa-square-check"></i> 10 đến 15 triệu</a>
+                        <a href="" id="a4"><i class="fa-regular fa-square-check"></i> Trên 15 triệu</a>
                     </div>
                 </div>
             </div>
@@ -143,7 +146,7 @@
 <footer>
     STAR HOMES - DỊCH VỤ HỖ TRỢ THUÊ VÀ CHO THUÊ PHÒNG TRỌ TẠI HÀ NỘI
 </footer>
-<script type="module" src="/js/fetch.js"></script>
+<script type="module" src="/js/room.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>

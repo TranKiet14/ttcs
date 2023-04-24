@@ -27,7 +27,7 @@ public class Room {
     private String image;
     @Column(name = "link")
     private String linkImages;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_client")
     private Client client;
 

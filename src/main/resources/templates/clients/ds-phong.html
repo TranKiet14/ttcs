@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -75,7 +75,7 @@
                         </li>
                         <li><a href="/form-room">ĐĂNG BÀI</a></li>
                         <li><a href="/phong-cua-toi">PHÒNG CỦA TÔI</a></li>
-                        <li><a href="/phong-cua-toi">LIÊN HỆ</a></li>
+                        <li><a href="">LIÊN HỆ</a></li>
                     </ul>
                 </div>
             </div>
@@ -83,51 +83,40 @@
     </div>
 </header>
 <div class="cameo"></div>
-<div class="section-two">
-    <div class="container">
-        <div class="row" id="room-info">
+<div class="container">
 
-        </div>
-    </div>
-</div>
-<div class="section-one">
-    <div class="container">
-        <div class="inner-wrap">
-            <h3 class="inner-title">
-                    <span>
-                        <img src="https://cdn.haluta.vn/media/core/logo/icon-leaf.svg" alt="">
-                    </span>
-                <span>ĐỐI TÁC CỦA STAR HOMES</span>
-                <div class="inner-dir"></div>
-            </h3>
-            <div class="row">
-                <div class="col-4">
-                    <div class="image-doitac">
-                        <img src="assets/images/FAMILY.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="image-doitac">
-                        <img src="assets/images/THINHPHAT.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="image-doitac">
-                        <img src="assets/images/TRUONGTHINH.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<footer>
-    STAR HOMES - DỊCH VỤ HỖ TRỢ THUÊ VÀ CHO THUÊ PHÒNG TRỌ TẠI HÀ NỘI
-</footer>
-<script type="module" src="/js/roominfo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-</script>
+    <h2>Danh Sách Khách Hàng</h2>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead class="table-success">
+        <tr>
+            <th>Địa chỉ</th>
+            <th>Giá</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="temproom : ${rooms}">
+            <td th:text="${temproom.address}" />
+            <td th:text="${temproom.price}" />
+
+            <td>
+                <a th:href="@{/delete(roomId=${temproom.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Are you sure you want to delete this client?'))) return false">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
 </body>
+
+</html>

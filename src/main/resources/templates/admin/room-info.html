@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Thông tin phòng</title>
+  <style>
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin: 20px 0;
+            font-size: 20px;
+        }
+
+        img{
+            margin: 20px;
+        }
+
+        i{
+            font-size: 22px;
+        }
+
+        .icons{
+            width: 30px;
+            display: inline-block;
+        }
+        h2{
+            padding: 20px;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+  <h2>Thông tin phòng</h2>
+  <hr>
+  <div class="row">
+    <div class="col-5">
+      <img th:src="@{/photos/__${room.image}__}">
+    </div>
+    <div class="col-7">
+      <ul>
+        <li><div class="icons"><i class="fa-solid fa-location-dot"></i></div>
+          Địa chỉ:
+          <span th:text="${room.address}"></span>
+        </li>
+        <li><div class="icons"><i class="fa-solid fa-sack-dollar"></i></div>
+          Giá:
+          <span th:text="${room.price}"></span>
+          <span> triệu</span>
+        </li>
+        <li><div class="icons"><i class="fa-solid fa-house"></i></div>
+          Diện tích:
+          <span th:text="${room.dientich}"></span>
+          <span>m<sup>2</sup></span>
+        </li>
+        <li><div class="icons"><i class="fa-solid fa-house"></i></div>
+          Loại phòng:
+          <span th:text="${room.type}"></span>
+        </li>
+        <li><div class="icons"><i class="fa-solid fa-couch"></i></div>
+          Nội thất:
+          <span th:text="${room.noithat}"></span>
+        </li>
+        <li><div class="icons"><i class="fa-solid fa-notes-medical"></i></div>
+          Lưu ý về dịch vụ:
+          <span th:text="${room.dichvu}"></span>
+        </li>
+        <li><div class="icons"><i class="fa-solid fa-image"></i></div>
+          Link ảnh và video chi tiết:
+          <a th:href="${room.linkImages}" target="_blank">Xem ảnh</a>
+        </li>
+        <li><a th:href="@{/admin/ds-duyet}">Back</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

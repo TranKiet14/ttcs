@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags -->
@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <title>Rooms Directory</title>
+    <title>Stars Homes</title>
     <script>
         var loadFile = function(event) {
         var output = document.getElementById('output');
@@ -36,55 +36,51 @@
 </head>
 <body>
 <div class="container">
-    <h3>Rooms Directory</h3>
+    <h3>Thông tin Phòng</h3>
     <hr>
-    <p class="h4 mb-4">Save Room</p>
-    <form action="#" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="id">Mã phòng:</label>
-            <input type="text" id="id" class="form-control mb-4 w-75" placeholder="Mã phòng">
-        </div>
+    <p class="h4 mb-4">Nhập thông tin</p>
+    <form action="#" th:action="@{/xet-duyet}" th:object="${tmproom}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="address">Địa chỉ:</label>
-            <input type="text"  id="address" class="form-control mb-4 w-75" placeholder="Địa chỉ">
+            <input type="text" th:field="*{address}" id="address" class="form-control mb-4 w-75" placeholder="Địa chỉ">
         </div>
         <div class="form-group">
-            <label for="dienTich">Diện tích:</label>
-            <input type="text"  id="dienTich" class="form-control mb-4 w-75" placeholder="Diện tích" >
+            <label for="dientich">Diện tích:</label>
+            <input type="text" th:field="*{dientich}" id="dientich" class="form-control mb-4 w-75" placeholder="Diện tích" >
         </div>
         <div class="form-group">
             <label for="type">Loại phòng:</label>
-            <input type="text" id="type" class="form-control mb-4 w-75" placeholder="Loại phòng">
+            <input type="text" th:field="*{type}" id="type" class="form-control mb-4 w-75" placeholder="Loại phòng">
         </div>
         <div class="form-group">
             <label for="trangThai">Trạng thái phòng:</label>
-            <input type="text"  id="trangThai" class="form-control mb-4 w-75" placeholder="Trạng thái phòng">
+            <input type="text" th:field="*{trangthai}" id="trangThai" class="form-control mb-4 w-75" placeholder="Trạng thái phòng">
         </div>
         <div class="form-group">
             <label for="noiThat">Nội thất:</label>
-            <textarea  id="noiThat" class="form-control mb-4 w-75" placeholder="Nội thất"></textarea>
+            <textarea  id="noiThat" th:field="*{noithat}" class="form-control mb-4 w-75" placeholder="Nội thất"></textarea>
         </div>
         <div class="form-group">
             <label for="dichvu">Lưu ý:</label>
-            <textarea  id="dichvu" class="form-control mb-4 w-75" placeholder="Lưu ý:"></textarea>
+            <textarea th:field="*{dichvu}" id="dichvu" class="form-control mb-4 w-75" placeholder="Lưu ý:"></textarea>
         </div>
         <div class="form-group">
             <label for="price">Giá:</label>
-            <input type="text"  id="price" class="form-control mb-4 w-75" placeholder="Giá:" >
+            <input type="text" th:field="*{price}" id="price" class="form-control mb-4 w-75" placeholder="Giá:" >
         </div>
         <div class="form-group">
             <label for="linkImages">Link ảnh và video chi tiết:</label>
-            <input type="text"  id="linkImages" class="form-control mb-4 w-75" placeholder="Link ảnh và video">
+            <input type="text" th:field="*{linkImages}" id="linkImages" class="form-control mb-4 w-75" placeholder="Link ảnh và video">
         </div>
         <div class="form-group">
             <label for="fileImage">Chọn ảnh:</label>
-            <input type="file"  id="fileImage" accept="image/*" onchange="loadFile(event)" class="form-control mb-4 w-75">
+            <input type="file" name="fileImage" id="fileImage" accept="image/*" onchange="loadFile(event)" class="form-control mb-4 w-75">
         </div>
         <img id="output" src="#" alt="Image"><br>
         <button type="submit" class="btn btn-info col-2" style="margin-top: 20px">Save</button>
     </form>
     <hr>
-    <a href="">Back to Rooms List</a>
+    <a href="/home">Quay Lại Trang Chủ</a>
 </div>
 </body>
 
