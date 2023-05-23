@@ -59,8 +59,8 @@ RoomController {
         return "/rooms/room-info";
     }
     @GetMapping("/danhsach")
-    public String showDs(Model theModel){
-        List<Room> list=roomService.findAll();
+    public String showDs(Model theModel, HttpSession session){
+        List<Room> list=roomService.findRoomsByClientId((Integer) session.getAttribute("id"));
         theModel.addAttribute("rooms", list);
         return "/clients/ds-phong";
     }
